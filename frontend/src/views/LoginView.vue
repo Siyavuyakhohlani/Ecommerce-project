@@ -51,7 +51,7 @@ export default {
       this.loading = true;
       this.errorMessage = "";
       try {
-        const response = await axios.post("http://localhost:5050/api/auth/login", this.formData);
+        const response = await axios.post("https://ecommerce-project-6wed.onrender.com/api/auth/login", this.formData);
         if (response.data && response.data.user_id) {
           alert("Login successful!");
           this.$store.dispatch("setUserId", response.data.user_id);
