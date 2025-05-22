@@ -14,13 +14,13 @@ const getSingleProduct = async (product_id) => {
   let [data] = await pool.query(`
       SELECT p.product_id, p.name AS name, p.description, p.color, p.price, p.stock, p.image_url, c.category_name
       FROM Products p
-      INNER JOIN Product_Categories c ON p.category_id = c.category_id
+      INNER JOIN product_categories c ON p.category_id = c.category_id
       WHERE p.product_id = ?`, [product_id]);
   return data;
 };
 
 const insertProduct = async (category_id, name, description, color, price, stock, image_url) => {
-  await pool.query("INSERT INTO Products (category_id, name, description, color, price, stock, image_url) VALUES (?, ?, ?, ?, ?, ?, ?)", 
+  await pool.query("INSERT INTO products (category_id, name, description, color, price, stock, image_url) VALUES (?, ?, ?, ?, ?, ?, ?)", 
     [category_id, name, description, color, price, stock, image_url]);
   return "Product inserted successfully!";
 };
@@ -84,7 +84,7 @@ const updateProduct = async (product_id, data) => {
 };
 
 const deleteProduct = async (product_id) => {
-  await pool.query("DELETE FROM Products WHERE product_id = ?", [product_id]);
+  await pool.query("DELETE FROM products WHERE product_id = ?", [product_id]);
   return "Product successfully deleted";
 };
 
