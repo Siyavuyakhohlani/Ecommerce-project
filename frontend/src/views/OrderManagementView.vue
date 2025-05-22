@@ -86,7 +86,7 @@ export default {
   methods: {
     async fetchOrders() {
       try {
-        const response = await axios.get("http://localhost:5050/api/checkout");
+        const response = await axios.get("https://ecommerce-project-6wed.onrender.com/api/checkout");
         this.orders = response.data;
       } catch (error) {
         console.error("Error fetching orders:", error);
@@ -103,7 +103,7 @@ export default {
     },
     async submitTracking() {
       try {
-        await axios.patch(`http://localhost:5050/api/checkout/${this.trackingDetails.order_id}`, this.trackingDetails);
+        await axios.patch(`https://ecommerce-project-6wed.onrender.com/api/checkout/${this.trackingDetails.order_id}`, this.trackingDetails);
         alert("Tracking updated successfully!");
         this.showModal = false;
         this.fetchOrders(); // Refresh orders
