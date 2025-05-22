@@ -7,7 +7,7 @@ import {
     deleteItemCon,
     dropCartCon,
     getCartTotalCon
-  } from "../controller/cartController.js";  // Ensure the correct path and file name here
+  } from "../Controller/cartController.js";  // Ensure the correct path and file name here
   
 const router = express.Router();
 
