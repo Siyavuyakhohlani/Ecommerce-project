@@ -39,7 +39,7 @@ export default {
       }
 
       try {
-        const response = await fetch("http://localhost:5050/api/reset-password", {
+        const response = await fetch("https://ecommerce-project-6wed.onrender.com/api/reset-password", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
