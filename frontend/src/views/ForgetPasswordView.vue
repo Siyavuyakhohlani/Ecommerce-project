@@ -52,7 +52,7 @@ export default {
       this.success = false;
       
       try {
-        const response = await axios.post("http://localhost:5050/api/request-reset", { email: this.email });
+        const response = await axios.post("https://ecommerce-project-6wed.onrender.com/api/request-reset", { email: this.email });
         this.message = response.data.message;
         this.success = true;
       } catch (error) {
