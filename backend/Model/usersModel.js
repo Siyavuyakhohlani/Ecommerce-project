@@ -6,12 +6,12 @@ const getUsers = async () => {
 };
 
 const getSingleUser = async (user_id) => {
-    let [data] = await pool.query("SELECT * FROM Users WHERE user_id = ?", [user_id]);
+    let [data] = await pool.query("SELECT * FROM users WHERE user_id = ?", [user_id]);
     return data;
 };
 
 const insertedUser = async (name, email, password, phone, address) => {
-    await pool.query("INSERT INTO Users (name, email, password, phone, address) VALUES (?, ?, ?, ?, ?)", [name, email, password, phone, address]);
+    await pool.query("INSERT INTO users (name, email, password, phone, address) VALUES (?, ?, ?, ?, ?)", [name, email, password, phone, address]);
     return "User inserted successfully!";
 };
 
@@ -41,7 +41,7 @@ const updateUser = async (user_id, data) => {
     updateValues.push(user_id);
   
     // Construct the SQL query for updating the user
-    const query = `UPDATE Users SET ${updateFields.join(", ")} WHERE user_id = ?`;
+    const query = `UPDATE users SET ${updateFields.join(", ")} WHERE user_id = ?`;
   
     // Execute the query and return a success message
     await pool.query(query, updateValues);
@@ -69,7 +69,7 @@ const deleteUser = async (user_id) => {
 
     // Step 4: Delete the user
     await pool.query(
-        "DELETE FROM Users WHERE user_id = ?", 
+        "DELETE FROM users WHERE user_id = ?", 
         [user_id]
     );
 
