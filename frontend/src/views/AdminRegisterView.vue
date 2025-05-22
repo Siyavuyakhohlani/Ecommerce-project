@@ -85,7 +85,7 @@
     methods: {
       async handleAdminRegister() {
         try {
-          const response = await axios.post("http://localhost:5050/api/auth/admin/register", this.formData);
+          const response = await axios.post("https://ecommerce-project-6wed.onrender.com/api/auth/admin/register", this.formData);
           alert(response.data.message || "Admin registered successfully!");
           this.$router.push("/admin/login");
         } catch (error) {
