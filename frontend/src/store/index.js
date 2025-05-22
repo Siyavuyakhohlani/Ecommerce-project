@@ -56,7 +56,7 @@ export default createStore({
   actions: {
     async getData({ commit }) {
       try {
-        const response = await fetch("http://localhost:5050/products");
+        const response = await fetch("https://ecommerce-project-6wed.onrender.com/products");
         const { All_Products } = await response.json();
         const updatedProducts = All_Products.map((product) => {
           let baseUrl = "https://raw.githubusercontent.com/awonkenkibi/images/main/";
@@ -81,7 +81,7 @@ export default createStore({
     },
     async getSingleProduct({ commit }, product_id) {
       try {
-        const response = await fetch(`http://localhost:5050/products/${product_id}`);
+        const response = await fetch(`https://ecommerce-project-6wed.onrender.com/products/${product_id}`);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -109,7 +109,7 @@ export default createStore({
         if (!state.All_Products) {
           await dispatch("getData");
         }
-        const response = await fetch(`http://localhost:5050/cart/${state.user_id}`);
+        const response = await fetch(`https://ecommerce-project-6wed.onrender.com/cart/${state.user_id}`);
         if (!response.ok) throw new Error("Error fetching cart");
         const cartData = await response.json();
         // Add image URLs for each cart item
@@ -137,7 +137,7 @@ export default createStore({
     },
     async fetchCartTotal({ commit, state }) {
       try {
-        const response = await fetch(`http://localhost:5050/cart/total/${state.user_id}`);
+        const response = await fetch(`https://ecommerce-project-6wed.onrender.com/cart/total/${state.user_id}`);
         if (!response.ok) throw new Error("Error fetching cart total");
         const { total } = await response.json();
         commit("SET_CART_TOTAL", total);
@@ -153,7 +153,7 @@ export default createStore({
           console.error("User ID is required but not found in state.");
           return;
         }
-        const response = await fetch("http://localhost:5050/cart", {
+        const response = await fetch("https://ecommerce-project-6wed.onrender.com/cart", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -177,7 +177,7 @@ export default createStore({
         return;
       }
       try {
-        const response = await fetch("http://localhost:5050/cart", {
+        const response = await fetch("https://ecommerce-project-6wed.onrender.com/cart", {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
@@ -192,7 +192,7 @@ export default createStore({
     },
     async removeFromCart({ dispatch }, cart_id) {
       try {
-        const response = await fetch(`http://localhost:5050/cart/${cart_id}`, {
+        const response = await fetch(`https://ecommerce-project-6wed.onrender.com/cart/${cart_id}`, {
           method: "DELETE",
         });
         if (!response.ok) throw new Error("Error removing item from cart");
@@ -203,7 +203,7 @@ export default createStore({
     },
     async clearCart({ dispatch, state }) {
       try {
-        const response = await fetch(`http://localhost:5050/cart/drop/${state.user_id}`, {
+        const response = await fetch(`https://ecommerce-project-6wed.onrender.com/cart/drop/${state.user_id}`, {
           method: "DELETE",
         });
         if (!response.ok) throw new Error("Error clearing cart");
