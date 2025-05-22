@@ -4,7 +4,7 @@ const getAllProducts = async (limit = 90, offset = 0) => {
   const [data] = await pool.query(`
       SELECT p.product_id, p.name AS product_name, p.description, p.color, p.price, p.stock, p.image_url, 
              c.category_name
-      FROM Products p
+      FROM products p
       INNER JOIN Product_Categories c ON p.category_id = c.category_id
       LIMIT ? OFFSET ?`, [limit, offset]);
   return data;
