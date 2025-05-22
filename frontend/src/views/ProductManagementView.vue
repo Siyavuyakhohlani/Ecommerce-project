@@ -120,7 +120,7 @@ export default {
   methods: {
     async fetchProducts() {
       try {
-        const response = await axios.get("http://localhost:5050/products");
+        const response = await axios.get("https://ecommerce-project-6wed.onrender.com/products");
         this.products = response.data.All_Products;
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -169,7 +169,7 @@ export default {
     },
     async addProduct() {
       try {
-        await axios.post("http://localhost:5050/products", this.data);
+        await axios.post("https://ecommerce-project-6wed.onrender.com/products", this.data);
         this.fetchProducts();
         this.hideModal();
       } catch (error) {
@@ -178,7 +178,7 @@ export default {
     },
     async updateProduct() {
       try {
-        await axios.patch(`http://localhost:5050/products/${this.data.product_id}`, this.data);
+        await axios.patch(`https://ecommerce-project-6wed.onrender.com/products/${this.data.product_id}`, this.data);
         this.fetchProducts();
         this.hideModal();
       } catch (error) {
@@ -188,7 +188,7 @@ export default {
     async deleteProduct(product_id) {
       if (confirm("Are you sure you want to delete this product?")) {
         try {
-          await axios.delete(`http://localhost:5050/products/${product_id}`);
+          await axios.delete(`https://ecommerce-project-6wed.onrender.com/products/${product_id}`);
           this.fetchProducts();
         } catch (error) {
           console.error("Error deleting product:", error);
