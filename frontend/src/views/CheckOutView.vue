@@ -111,7 +111,7 @@ export default {
     },
     async fetchCheckoutDetails() {
       try {
-        const response = await axios.get(`http://localhost:5050/api/checkout/${this.user_id}`);
+        const response = await axios.get(`https://ecommerce-project-6wed.onrender.com/api/checkout/${this.user_id}`);
         const { userDetails, cartItems } = response.data;
         this.cartItems = cartItems; // Store cart items
         // Calculate total amount from cart items
@@ -129,7 +129,7 @@ export default {
       try {
         // Log the shipping details to check if they are correct
         console.log("Shipping Details:", this.shippingDetails);
-        const response = await axios.post(`http://localhost:5050/api/checkout/${this.user_id}/shipping`, this.shippingDetails);
+        const response = await axios.post(`https://ecommerce-project-6wed.onrender.com/api/checkout/${this.user_id}/shipping`, this.shippingDetails);
         alert('Shipping details saved!');
       } catch (error) {
         // Log the full error response for more details
@@ -156,7 +156,7 @@ export default {
           card_expiry: this.cardDetails.card_expiry,
           card_cvc: this.cardDetails.card_cvc
         };
-        const response = await axios.post(`http://localhost:5050/api/checkout/${this.user_id}/payment`, paymentData);
+        const response = await axios.post(`https://ecommerce-project-6wed.onrender.com/api/checkout/${this.user_id}/payment`, paymentData);
 
         // If payment is successful, create an order
         if (response.data.success) {
@@ -166,7 +166,7 @@ export default {
             total_price: this.totalAmount,
             shipping_details: this.shippingDetails
           };
-          const orderResponse = await axios.post(`http://localhost:5050/api/checkout/`, orderData);
+          const orderResponse = await axios.post(`https://ecommerce-project-6wed.onrender.com/api/checkout/`, orderData);
 
           if (orderResponse.data.success) {
             this.showModal = true; // Show success modal
