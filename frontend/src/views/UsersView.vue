@@ -43,7 +43,7 @@ export default {
       this.loading = true;
       this.error = null;
       try {
-        const response = await axios.get("http://localhost:5050/users");
+        const response = await axios.get("https://ecommerce-project-6wed.onrender.com/users");
         this.users = response.data.All_Users;
       } catch (err) {
         this.error = err.response?.data?.message || "Failed to fetch users.";
