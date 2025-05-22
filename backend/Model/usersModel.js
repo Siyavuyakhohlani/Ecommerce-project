@@ -1,7 +1,7 @@
 import { pool } from "../config/config.js"
 
 const getUsers = async () => {
-    let [data, rows] = await pool.query("SELECT * FROM Users");
+    let [data, rows] = await pool.query("SELECT * FROM users");
     return data;
 };
 
