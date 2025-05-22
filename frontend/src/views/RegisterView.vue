@@ -83,7 +83,7 @@ export default {
   methods: {
       async registerUser() {
     try {
-      const response = await axios.post('http://localhost:5050/api/auth/register', {
+      const response = await axios.post('https://ecommerce-project-6wed.onrender.com/api/auth/register', {
         name: this.name,
         email: this.email,
         password: this.password,
