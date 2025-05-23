@@ -219,6 +219,7 @@ body, html, #app {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  flex-direction: row;
 }
 
 .form-container {
@@ -338,5 +339,17 @@ input:focus {
   color: var(--text-light);
   font-size: 20px;
   margin: 0 10px;
+}
+
+/* Media query for small screens */
+@media (max-width: 768px) {
+  .checkout-container {
+    flex-direction: column; /* Stack forms vertically on small screens */
+  }
+  
+  .form-container {
+    width: 100%; /* Make forms take full width */
+    margin-bottom: 20px; /* Add space between stacked forms */
+  }
 }
 </style>
