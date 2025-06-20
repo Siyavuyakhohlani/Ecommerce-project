@@ -11,6 +11,15 @@
         <option value="Kids">Kids</option>
       </select>
     </div>
+
+    <!-- Loading State -->
+    <div v-if="isLoading" class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <p class="mt-3">Loading products...</p>
+    </div>
+    
     <!-- Products Grid -->
     <div class="row">
       <template v-if="All_Products && All_Products.length">
@@ -53,6 +62,7 @@ export default {
       selectedCategory: "All",
       favorites: [],
       cart: [],
+      isLoading: true // Add this line
     };
   },
   computed: {
@@ -98,7 +108,12 @@ export default {
     },
   },
   mounted() {
-    this.$store.dispatch("getData");
+    this.isLoading = true;
+  setTimeout(() => {
+    this.$store.dispatch("getData").finally(() => {
+      this.isLoading = false;
+    });
+  }, 2000); // Minimum 2 seconds delay
   },
 };
 </script>
@@ -211,6 +226,21 @@ h1 {
 }
 .g-4 {
   --bs-gutter-y: 1.5rem;
+}
+
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Add a fade-in animation for when content loads */
+.row {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 /* Media queries for different screens */
 @media (max-width: 1024px) {
